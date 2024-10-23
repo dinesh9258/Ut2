@@ -24,16 +24,7 @@ class TestSensors(unittest.TestCase):
     # expects the method to return False, since the limits are
     # incorrect.
     def test_check_limits2(self):
-        sys.argv = ['sensors_main.py', '16', '16']
-
-        expected_output = "Error: Incorrect command line arguments.\n"
-
-        sensors_main.main()
-
-        output = mock_print.call_args[0][0]
- 
-        self.assertEqual(output, expected_output)
- 
+        pass
         # TODO: implement the actual test case code
     
     # TODO: Implement Test case test_check_limits3 (UT3) according to your
@@ -51,7 +42,7 @@ class TestSensors(unittest.TestCase):
     # mock_print as a parameter of the test case function.
     @patch('builtins.print')
     def test_system_main(self):
-        sys.argv = ['sensors_main.py', '16', '16']
+        sys.argv = ['sensors_main.py', '21', '19']
         expected_output = "Error: Incorrect command line arguments.\n"
         sys.stdout = StringIO()
         sensors_main.main()
@@ -61,7 +52,16 @@ class TestSensors(unittest.TestCase):
  
         self.assertEqual(output, expected_output)
     def test_check_limits_integration1(self, mock_print):
-        pass
+        sys.argv = ['sensors_main.py', '21', '19']
+
+        expected_output = "Error: Incorrect command line arguments.\n"
+
+        sensors_main.main()
+
+        output = mock_print.call_args[0][0]
+ 
+        self.assertEqual(output, expected_output)
+ 
         # 1. set command line parameters, since they are where main gets the
         # min and max temperature settings
 
