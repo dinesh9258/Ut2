@@ -24,7 +24,16 @@ class TestSensors(unittest.TestCase):
     # expects the method to return False, since the limits are
     # incorrect.
     def test_check_limits2(self):
-        pass
+        sys.argv = ['sensors_main.py', '16', '16']
+
+        expected_output = "Error: Incorrect command line arguments.\n"
+
+        sensors_main.main()
+
+        output = mock_print.call_args[0][0]
+ 
+        self.assertEqual(output, expected_output)
+ 
         # TODO: implement the actual test case code
     
     # TODO: Implement Test case test_check_limits3 (UT3) according to your
